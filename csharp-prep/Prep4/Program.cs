@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        list <int> numbers = new list<int>();
+        List <int> numbers = new List<int>();
         Console.WriteLine("Enter a series of numbers(Enter 0 to stop):");
         int input = Convert.ToInt32(Console.ReadLine());
 
