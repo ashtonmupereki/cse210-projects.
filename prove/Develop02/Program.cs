@@ -14,7 +14,7 @@ class Program
             Console.WriteLine("4. Load from a file");
             Console.WriteLine("5. Exit");
             Console.WriteLine("6. Add a new prompt");
-            Console.WriteLine(" 7. What do you want to say?");
+            Console.WriteLine("7. What do you want to say?");
 
             string choice = Console.ReadLine();
 
