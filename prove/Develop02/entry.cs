@@ -1,4 +1,4 @@
-class Entry
+public abstract class Entry
 {
     public string Title { get; set; }
     public string Body { get; set; }
@@ -11,8 +11,5 @@ class Entry
         Date = date;
     }
 
-    public override string ToString()
-    {
-        return $"{Title} - {Date.ToShortDateString()}\n{Body}";
-    }
+    public abstract string ToString();
 }
