@@ -1,32 +1,54 @@
-class Journal
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace JournalApp
 {
-    public List<Entry> Entries { get; set; }
-
-    public Journal()
+    public class Journal
     {
-        Entries = new List<Entry>();
-    }
+        private List<Entry> entries;
 
-    public void AddEntry(Entry entry)
-    {
-        Entries.Add(entry);
-    }
-
-    public void DisplayEntries()
-    {
-        foreach (var entry in Entries)
+        public Journal()
         {
-            Console.WriteLine(entry.ToString());
+            entries = new List<Entry>();
         }
-    }
 
-    public void SaveToFile(string fileName)
-    {
-        // TODO: Implement saving to a file
-    }
+        public void AddEntry(Entry entry)
+        {
+            entries.Add(entry);
+        }
 
-    public void LoadFromFile(string fileName)
-    {
-        // TODO: Implement loading from a file
+        public void DisplayEntries()
+        {
+            foreach (Entry entry in entries)
+            {
+                Console.WriteLine(entry.ToString());
+            }
+        }
+
+        public void SaveToFile(string fileName)
+        {
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                foreach (Entry entry in entries)
+                {
+                    writer.WriteLine(entry.ToString());
+                }
+            }
+        }
+
+        public void LoadFromFile(string fileName)
+        {
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    Entry entry = new Entry(parts[0], parts[1], DateTime.Parse(parts[2]));
+                    AddEntry(entry);
+                }
+            }
+        }
     }
 }

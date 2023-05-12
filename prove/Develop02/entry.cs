@@ -1,18 +1,23 @@
-class Entry
+using System;
+
+namespace JournalApp
 {
-    public string Title { get; set; }
-    public string Body { get; set; }
-    public DateTime Date { get; set; }
-
-    public Entry(string title, string body, DateTime date)
+    public class Entry
     {
-        Title = title;
-        Body = body;
-        Date = date;
-    }
+        public string Prompt { get; set; }
+        public string Response { get; set; }
+        public DateTime Date { get; set; }
 
-    public override string ToString()
-    {
-        return $"{Title} - {Date.ToShortDateString()}\n{Body}";
+        public Entry(string prompt, string response, DateTime date)
+        {
+            Prompt = prompt;
+            Response = response;
+            Date = date;
+        }
+
+        public override string ToString()
+        {
+            return $"{Date.ToShortDateString()} - {Prompt}: {Response}";
+        }
     }
 }
