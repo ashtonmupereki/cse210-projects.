@@ -1,35 +1,54 @@
-while (true)
+class Menu
 {
-    Console.WriteLine("1. Add entry");
-    Console.WriteLine("2. Display entries");
-    Console.WriteLine("3. Save entries to file");
-    Console.WriteLine("4. Load entries from file");
-    Console.WriteLine("5. Generate prompt");
-    Console.WriteLine("6. Exit");
+ private Journal journal;
+ private PromptGenerator promptGenerator;
 
-    string choice = Console.ReadLine();
+ public Menu()
+ {
+ journal = new Journal();
+ promptGenerator = new PromptGenerator();
+ }
 
-    switch (choice)
-    {
-        case "1":
-            // Add entry
-            break;
-        case "2":
-            // Display entries
-            break;
-        case "3":
-            // Save entries to file
-            break;
-        case "4":
-            // Load entries from file
-            break;
-        case "5":
-            // Generate prompt
-            break;
-        case "6":
-            return;
-        default:
-            Console.WriteLine("Invalid choice.");
-            break;
-    }
+ public void Run()
+ {
+ while (true)
+ {
+ Console.WriteLine("1. Add entry");
+ Console.WriteLine("2. Display entries");
+ Console.WriteLine("3. Save entries to file");
+ Console.WriteLine("4. Load entries from file");
+ Console.WriteLine("5. Generate prompt");
+ Console.WriteLine("6. Exit");
+
+ string choice = Console.ReadLine();
+
+ switch (choice)
+ {
+ case "1":
+ string prompt = promptGenerator.GeneratePrompt();
+ string response = Console.ReadLine();
+ Entry entry = new Entry(prompt, response, DateTime.Now);
+ journal.AddEntry(entry);
+ break;
+ case "2":
+ journal.DisplayEntries();
+ break;
+ case "3":
+ journal.SaveToFile("filename.txt");
+ break;
+ case "4":
+ journal.LoadFromFile("filename.txt");
+ break;
+ case "5":
+ string newPrompt = promptGenerator.GeneratePrompt();
+ Console.WriteLine(newPrompt);
+ break;
+ case "6":
+ return;
+ default:
+ Console.WriteLine("Invalid choice.");
+ break;
+ }
+ }
+ }
 }
