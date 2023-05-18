@@ -12,23 +12,28 @@ namespace ConsoleApp1
             Console.WriteLine("Reference: {0} {1}:{2}-{3}", reference._book, reference._chapter, reference._startVerse, reference._endVerse);
             Console.WriteLine("Scripture: {0} - {1}", scripture._reference, scripture._text);
 
+            string[] words = scripture._text.Split(' ');
+            int index = 0;
+            Random random = new Random();
             while (true)
             {
-                Console.WriteLine("Press Enter to continue or type 'quit' to finish.");
+                Console.Write("Press Enter to continue or type quit to finish: ");
                 string input = Console.ReadLine();
-
                 if (input.ToLower() == "quit")
                 {
                     break;
                 }
-
-                string[] words = scripture._text.Split(' ');
-                int index = new Random().Next(words.Length - 2);
-                for (int i = index; i < index + 3 && i < words.Length; i++)
+                for (int i = index; i < words.Length; i += 3)
                 {
-                    words[i] = new string('_', words[i].Length);
+                    if (random.Next(2) == 0 && i + 2 < words.Length)
+                    {
+                        words[i] = new string('_', words[i].Length);
+                        words[i + 1] = new string('_', words[i + 1].Length);
+                        words[i + 2] = new string('_', words[i + 2].Length);
+                    }
                 }
                 Console.WriteLine(string.Join(" ", words));
+                index += 3;
             }
 
             Console.WriteLine("Press Enter to quit...");
