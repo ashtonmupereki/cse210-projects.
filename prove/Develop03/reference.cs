@@ -1,15 +1,15 @@
 public class Reference
 {
-    public string Book { get; set; }
-    public int Chapter { get; set; }
-    public int StartVerse { get; set; }
-    public int EndVerse { get; set; }
+    public string _book;
+    public int _chapter;
+    public int _startVerse;
+    public int _endVerse;
 
     public Reference(string book, int chapter, int startVerse, int endVerse)
     {
-        Book = book;
-        Chapter = chapter;
-        StartVerse = startVerse;
-        EndVerse = endVerse;
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
     }
 }
