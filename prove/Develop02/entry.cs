@@ -4,20 +4,20 @@ namespace JournalApp
 {
     public class Entry
     {
-        public string Prompt { get; set; }
-        public string Response { get; set; }
-        public DateTime Date { get; set; }
+        public string _prompt;
+        public string _response;
+        public DateTime _date;
 
         public Entry(string prompt, string response, DateTime date)
         {
-            Prompt = prompt;
-            Response = response;
-            Date = date;
+            _prompt = prompt;
+            _response = response;
+            _date = date;
         }
 
         public override string ToString()
         {
-            return $"{Date.ToShortDateString()} - {Prompt}: {Response}";
+            return $"{_date.ToShortDateString()} - {_prompt}: {_response}";
         }
     }
 }
