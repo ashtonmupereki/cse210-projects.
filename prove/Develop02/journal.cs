@@ -1,50 +1,50 @@
-class Journal
+public class Journal
 {
- private List<Entry> entries;
+    public List<Entry> _entries;
 
- public Journal()
- {
- entries = new List<Entry>();
- }
+    public Journal()
+    {
+        _entries = new List<Entry>();
+    }
 
- public void AddEntry(Entry entry)
- {
- entries.Add(entry);
- }
+    public void AddEntry(Entry entry)
+    {
+        _entries.Add(entry);
+    }
 
- public void DisplayEntries()
- {
- foreach (Entry entry in entries)
- {
- Console.WriteLine(entry.ToString());
- }
- }
+    public void DisplayEntries()
+    {
+        foreach (var entry in _entries)
+        {
+            Console.WriteLine($"{entry.Date}: {entry.Prompt} - {entry.Response}");
+        }
+    }
 
- public void SaveToFile(string fileName)
- {
- using (StreamWriter writer = new StreamWriter(fileName))
- {
- foreach (Entry entry in entries)
- {
- writer.WriteLine(entry.ToString());
- }
- }
- }
+    public void SaveToFile(string fileName)
+    {
+        using (var writer = new StreamWriter(fileName))
+        {
+            foreach (var entry in _entries)
+            {
+                writer.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
+            }
+        }
+    }
 
- public void LoadFromFile(string fileName)
- {
- using (StreamReader reader = new StreamReader(fileName))
- {
- string line;
- while ((line = reader.ReadLine()) != null)
- {
- string[] parts = line.Split(',');
- string prompt = parts[0];
- string response = parts[1];
- DateTime date = DateTime.Parse(parts[2]);
- Entry entry = new Entry(prompt, response, date);
- entries.Add(entry);
- }
- }
- }
+    public void LoadFromFile(string fileName)
+    {
+        using (var reader = new StreamReader(fileName))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+                var date = DateTime.Parse(values[0]);
+                var prompt = values[1];
+                var response = values[2];
+                var entry = new Entry(prompt, response) { _date = date };
+                _entries.Add(entry);
+            }
+        }
+    }
 }
