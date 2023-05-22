@@ -1,9 +1,9 @@
 public class Prompt
 {
-    public string PromptText { get; set; }
+    public string _promptText;
 
     public Prompt(string promptText)
     {
-        PromptText = promptText;
+        _promptText = promptText;
     }
 }

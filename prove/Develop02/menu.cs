@@ -15,7 +15,7 @@ public class Menu
         while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
         {
             Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
-            Console.WriteLine("Whats on your mind?");
+   
         }
         return choice;
     }

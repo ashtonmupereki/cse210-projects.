@@ -16,7 +16,7 @@ public class Journal
     {
         foreach (var entry in _entries)
         {
-            Console.WriteLine($"{entry.Date}: {entry.Prompt} - {entry.Response}");
+            Console.WriteLine($"{entry._date}: {entry._prompt} - {entry._response}");
         }
     }
 
@@ -26,7 +26,7 @@ public class Journal
         {
             foreach (var entry in _entries)
             {
-                writer.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
+                writer.WriteLine($"{entry._date},{entry._prompt},{entry._response}");
             }
         }
     }
