@@ -1,56 +1,32 @@
-public class Word
+class Word
 {
     private string _word;
     private bool _isHidden;
-    private string[] _scripture;
 
-    public Word(string word, string[] scripture)
+    public Word(string word, bool isHidden)
     {
         _word = word;
-        _isHidden = false;
-        _scripture = scripture;
+        _isHidden = isHidden;
     }
 
-    public void HideWords()
+    public void HideWord()
     {
         _isHidden = true;
     }
 
-    public void ShowWords()
+    public void ShowWord()
     {
         _isHidden = false;
     }
-
-    public string GetRenderedText()
+public string GetRenderedText()
     {
-        string renderedText = "";
-
         if (_isHidden)
         {
-            // Replace scripture words with dashes
-            string[] words = _word.Split(' ');
-
-            foreach (string word in words)
-            {
-                if (_scripture.Contains(word.ToLower()))
-                {
-                    string hiddenWord = new string('-', word.Length);
-                    renderedText += hiddenWord + " ";
-                }
-                else
-                {
-                    renderedText += word + " ";
-                }
-            }
+            return "****";
         }
         else
         {
-            renderedText = _word;
+            return _word;
         }
-
-        // Add formatting
-        renderedText = "<b>" + renderedText.TrimEnd() + "</b>";
-
-        return renderedText;
     }
 }

@@ -1,19 +1,15 @@
-public class Program
+class Program
 {
-    private static Scripture _scripture;
-
-    static void Main(string[] args)
+    static void Main(string args)
     {
+        // create a new reference object
         Reference reference = new Reference("John", 3, 16);
-        string text = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.";
 
-        _scripture = new Scripture(text, reference);
+        // create a new scripture object
+        Scripture scripture = new Scripture("For God so loved the world...", reference);
 
-        Console.WriteLine(_scripture.GetRenderedText("reference"));
-        Console.WriteLine(_scripture.GetRenderedText("visible"));
-
-        _scripture.HideWords();
-
-        Console.WriteLine(_scripture.GetRenderedText("hidden"));
+        // print the reference and rendered text
+        Console.WriteLine(scripture._reference.Display());
+        Console.WriteLine(scripture.GetRenderedText("HTML"));
     }
 }

@@ -1,8 +1,8 @@
-public class Scripture
+class Scripture
 {
     private Reference _reference;
     private bool _isCompletelyHidden;
-    private List<Word> _words;
+    private List<string> _words;
 
     public Scripture(string text, Reference reference)
     {
@@ -11,58 +11,40 @@ public class Scripture
         CreateWordList(text);
     }
 
-    public bool HideWords()
+    public void HideWords()
     {
-        if (_isCompletelyHidden)
-        {
-            return false;
-        }
-
-        foreach (Word word in _words)
-        {
-            word.HideWords();
-        }
-
-        return true;
+        _isCompletelyHidden = true;
     }
 
     public void CreateWordList(string text)
     {
-        string[] words = text.Split(' ');
-
-        foreach (string word in words)
-        {
-            Word newWord = new Word(word, _reference.GetScriptureWords());
-
-            _words.Add(newWord);
-        }
+        _words = text.Split(' ').ToList();
     }
 
     public string GetRenderedText(string type)
     {
-        string renderedText = "";
-
-        if (type == "reference")
+        if (_isCompletelyHidden)
         {
-            renderedText = _reference.Display();
+            return;
         }
-        else if (type == "hidden")
+
+        string renderedText =;
+        foreach (string word in _words)
         {
-            foreach (Word word in _words)
+            if (type == "HTML")
             {
-                renderedText += word.GetRenderedText() + " ";
+                renderedText += "<span class=\"hidden-word\">" + word + "</span> ";
+            }
+            else if (type == "Markdown")
+            {
+                renderedText += "`" + word + "` ";
+            }
+            else
+            {
+                renderedText += word + " ";
             }
         }
-        else if (type == "visible")
-        {
-            foreach (Word word in _words)
-            {
-                word.ShowWords();
 
-                renderedText += word.GetRenderedText() + " ";
-            }
-        }
-
-        return renderedText.TrimEnd();
+        return renderedText;
     }
 }
