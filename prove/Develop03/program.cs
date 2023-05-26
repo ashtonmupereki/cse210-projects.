@@ -9,7 +9,7 @@ class Program
         Scripture scripture = new Scripture("For God so loved the world...", reference);
 
         // print the reference and rendered text
-        Console.WriteLine(scripture._reference.Display());
+        Console.WriteLine(scripture.Reference.Display());
         Console.WriteLine(scripture.GetRenderedText("HTML"));
     }
 }

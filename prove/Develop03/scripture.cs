@@ -2,7 +2,7 @@ class Scripture
 {
     private Reference _reference;
     private bool _isCompletelyHidden;
-    private List<string> _words;
+    private List<Word> _words;
 
     public Scripture(string text, Reference reference)
     {
@@ -14,34 +14,46 @@ class Scripture
     public void HideWords()
     {
         _isCompletelyHidden = true;
+        foreach (Word word in _words)
+        {
+            word.HideWord();
+        }
     }
 
     public void CreateWordList(string text)
     {
-        _words = text.Split(' ').ToList();
+        _words = new List<Word>();
+        foreach (string word in text.Split(' '))
+        {
+            _words.Add(new Word(word, false));
+        }
     }
 
     public string GetRenderedText(string type)
     {
         if (_isCompletelyHidden)
         {
-            return;
+            return "This scripture is completely hidden.";
         }
 
         string renderedText =;
-        foreach (string word in _words)
+        foreach (Word word in _words)
         {
-            if (type == "HTML")
+            if (word.GetRenderedText() == "****")
             {
-                renderedText += "<span class=\"hidden-word\">" + word + "</span> ";
+                renderedText += "**** ";
+            }
+            else if (type == "HTML")
+            {
+                renderedText += "<span class=\"hidden-word\">" + word.GetRenderedText() + "</span> ";
             }
             else if (type == "Markdown")
             {
-                renderedText += "`" + word + "` ";
+                renderedText += "`" + word.GetRenderedText() + "` ";
             }
             else
             {
-                renderedText += word + " ";
+                renderedText += word.GetRenderedText() + " ";
             }
         }
 
