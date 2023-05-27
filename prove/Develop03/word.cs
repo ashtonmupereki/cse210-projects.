@@ -1,12 +1,12 @@
-class Word
+public class Word
 {
     private string _word;
     private bool _isHidden;
 
-    public Word(string word, bool isHidden)
+    public Word(string word)
     {
         _word = word;
-        _isHidden = isHidden;
+        _isHidden = false;
     }
 
     public void HideWord()
@@ -18,11 +18,12 @@ class Word
     {
         _isHidden = false;
     }
-public string GetRenderedText()
+
+    public string GetRenderedText()
     {
         if (_isHidden)
         {
-            return "****";
+            return new string('-', _word.Length);
         }
         else
         {
