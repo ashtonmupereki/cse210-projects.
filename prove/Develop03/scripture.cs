@@ -1,28 +1,32 @@
 using System;
 
-public class Scripture
+class Scripture
 {
-    private Reference _reference;
-    private string _text;
+    private string reference;
+    private string text;
+    private List<string> words;
 
-    public Scripture(Reference reference, string text)
+    public Scripture(string reference, string text)
     {
-        _reference = reference;
-        _text = text;
+        this.reference = reference;
+        this.text = text;
+        this.words = new List<string>(text.Split(' '));
     }
 
-    public Reference GetReference()
+    public void HideWords()
     {
-        return _reference;
+        Random rand = new Random();
+        int numWordsToHide = rand.Next(1, words.Count / 2);
+
+        for (int i = 0; i < numWordsToHide; i++)
+        {
+            int index = rand.Next(words.Count);
+            words[index] = new string('_', words[index].Length);
+        }
     }
 
-    public string GetText()
+    public override string ToString()
     {
-        return _text;
-    }
-
-    public string GetFormattedText()
-    {
-        return $"{_reference.Display()}: {_text}";
+        return $"{reference}: {string.Join(' ', words)}";
     }
 }
