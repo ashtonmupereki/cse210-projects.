@@ -4,29 +4,29 @@ class Scripture
 {
     private string reference;
     private string text;
-    private List<string> words;
+    private List<Word> _words;
 
     public Scripture(string reference, string text)
     {
         this.reference = reference;
         this.text = text;
-        this.words = new List<string>(text.Split(' '));
+        this._words = new List<Word>(_words.Split(' '));
     }
 
     public void HideWords()
     {
         Random rand = new Random();
-        int numWordsToHide = rand.Next(1, words.Count / 2);
+        int numWordsToHide = rand.Next(1, _words.Count / 2);
 
         for (int i = 0; i < numWordsToHide; i++)
         {
-            int index = rand.Next(words.Count);
-            words[index] = new string('_', words[index].Length);
+            int index = rand.Next(_words.Count);
+            _words[index].HideWord();
         }
     }
 
     public override string ToString()
     {
-        return $"{reference}: {string.Join(' ', words)}";
+        return $"{reference}: {string.Join(' ', _words)}";
     }
 }
