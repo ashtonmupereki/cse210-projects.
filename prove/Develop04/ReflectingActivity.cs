@@ -1,29 +1,53 @@
-public class ReflectingActivity : Activity
+class ReflectingActivity
 {
-    public override void Start()
+    private int _seconds;
+    private List<string> _questions = new List<string>()
     {
-        Console.WriteLine("Welcome to Reflecting Activity.");
-        Console.WriteLine("This activity will help you to reflect on times in your life when you have shown strength and resilience.");
-        Console.Write("How long in seconds will you want for the session? ");
-        int time = int.Parse(Console.ReadLine());
-        Console.WriteLine("Get ready...");
-        Console.WriteLine("Consider the following prompt:");
-        Console.WriteLine("Think of the time you did something difficult");
-        Console.Write("When you have something in mind, press enter to continue.");
-        Console.ReadLine();
-        Console.WriteLine("You may begin:");
-        for (int i = 3; i > 0; i--)
+        "What did you learn today?",
+        "What was the best part of your day?",
+        "What was the most challenging part of your day?",
+        "What are you grateful for today?",
+        "What could you have done differently today?",
+        "What are you looking forward to tomorrow?"
+    };
+
+    public void startReflecting(int seconds)
+    {
+        _seconds = seconds;
+        Console.WriteLine($"Starting reflecting activity for {_seconds} seconds...");
+        reflectOnExperience();
+    }
+
+    private void reflectOnExperience()
+    {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        while (stopwatch.Elapsed < TimeSpan.FromSeconds(_seconds))
         {
-            Console.WriteLine(i);
-            System.Threading.Thread.Sleep(1000);
+            DisplayQuestion();
+            promptForReflection();
         }
-        // simulate reflecting activity
-        Console.Write("How did you feel when it was complete? ");
-        string answer1 = Console.ReadLine();
-        System.Threading.Thread.Sleep(2000);
-        Console.Write("What is your favorite thing about this experience? ");
-        string answer2 = Console.ReadLine();
-        System.Threading.Thread.Sleep(2000);
-        Console.WriteLine($"Well done! You have completed another {time} seconds for the reflecting activity.");
+
+        stopwatch.Stop();
+        Console.WriteLine($"Reflecting activity complete! You reflected for {_seconds} seconds.");
+    }
+
+    private void promptForReflection()
+    {
+        Console.WriteLine("Please reflect on the question and press any key to continue...");
+        Console.ReadKey();
+    }
+
+    private string GetRandomQuestion()
+    {
+        Random random = new Random();
+        int index = random.Next(_questions.Count);
+        return _questions[index];
+    }
+
+    private void DisplayQuestion()
+    {
+        Console.WriteLine(GetRandomQuestion());
     }
 }

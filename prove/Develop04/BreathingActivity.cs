@@ -1,21 +1,38 @@
-public class BreathingActivity : Activity
+class BreathingActivity
 {
-    public override void Start()
+    private int _seconds;
+
+    public void startBreathing(int seconds)
     {
-        Console.WriteLine("Welcome to Breathing Activity.");
-        Console.WriteLine("This activity will help you to relax by walking through breathing in and out slowly.");
-        Console.WriteLine("Clear your mind and focus on your breath.");
-        Console.Write("How long in seconds would you like for the session? ");
-        int time = int.Parse(Console.ReadLine());
-        Console.WriteLine("Get ready...");
-        // simulate breathing activity
-        for (int i = time; i > 0; i--)
+        _seconds = seconds;
+        Console.WriteLine($"Starting breathing activity for {_seconds} seconds...");
+        TrackTime();
+    }
+
+    private void BreathIn()
+    {
+        Console.WriteLine("Breathing in...");
+    }
+
+    private void BreathOut()
+    {
+        Console.WriteLine("Breathing out...");
+    }
+
+    private void TrackTime()
+    {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        while (stopwatch.Elapsed < TimeSpan.FromSeconds(_seconds))
         {
-            Console.WriteLine($"Breathing in... {i}");
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine($"Breathing out... {i}");
-            System.Threading.Thread.Sleep(1000);
+            BreathIn();
+            Thread.Sleep(2000);
+            BreathOut();
+            Thread.Sleep(2000);
         }
-        Console.WriteLine("Goodbye!");
+
+        stopwatch.Stop();
+        Console.WriteLine($"Breathing activity complete! You breathed for {_seconds} seconds.");
     }
 }

@@ -1,24 +1,44 @@
-public class ListingActivity : Activity
+class ListingActivity
 {
-    public override void Start()
+    private int _seconds;
+    private List<ListedItem> _items = new List<ListedItem>();
+
+    public void startListing(int seconds)
     {
-		Console.WriteLine("Welcome to Listing Activity.");
-		Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-		Console.Write("How long in seconds would you like to do the session? ");
-		int time = int.Parse(Console.ReadLine());
-		Console.WriteLine("Get ready...");
-		Console.WriteLine("List as many responses as you can for the following prompt:");
-		Console.Write("\nWhen have you felt the Holy Ghost this month?\nYou may begin:\n");
-		
-		// simulate listing activity
-		string prompt;
-		int count = 0;
-		do
-		{
-			prompt = Console.ReadLine();
-			count++;
-		} while (!string.IsNullOrEmpty(prompt));
-		
-		Console.WriteLine($"Well done! You listed {count - 1} responses.");
+        _seconds = seconds;
+        Console.WriteLine($"Starting listing activity for {_seconds} seconds...");
+        listedItemCount();
+    }
+
+    private void listedItemCount()
+    {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        while (stopwatch.Elapsed < TimeSpan.FromSeconds(_seconds))
+        {
+            Console.WriteLine($"You have {_items.Count} items listed.");
+            Thread.Sleep(2000);
+        }
+
+        stopwatch.Stop();
+        Console.WriteLine($"Listing activity complete! You listed items for {_seconds} seconds.");
+    }
+
+    public void AddItem(string name, string description)
+    {
+        _items.Add(new ListedItem(name, description));
+    }
+}
+
+class ListedItem
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
+
+    public ListedItem(string name, string description)
+    {
+        Name = name;
+        Description = description;
     }
 }
