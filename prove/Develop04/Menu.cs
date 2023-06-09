@@ -9,6 +9,7 @@ public class Menu {
     }
     
     public void DisplayMenu() {
+        Console.WriteLine("Menu options");
         Console.WriteLine("Please select one of the following options:");
         Console.WriteLine("1. Start breathing activity");
         Console.WriteLine("2. Start reflecting activity");
