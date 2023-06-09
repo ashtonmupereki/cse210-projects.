@@ -2,7 +2,7 @@ using System;
 
 class Program {
     static void Main(string[] args) {
-        Console.WriteLine("Welcome to the activity program!");
+        Console.WriteLine("Welcome to the Mindfulness activity program!");
         Console.WriteLine("This program offers three activities to help you relax and reflect.");
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
