@@ -1,38 +1,41 @@
-class BreathingActivity
+class BreathingActivity : Activity
 {
-    private int _seconds;
+   // Attributes
+   private int _breathsPerMinute;
+   private int _breathIn;
+   private int _breathOut;
+   public string _message;
 
-    public void startBreathing(int seconds)
-    {
-        _seconds = seconds;
-        Console.WriteLine($"Starting breathing activity for {_seconds} seconds...");
-        TrackTime();
-    }
+   // Constructors
+   public BreathingActivity(string activityName, int activityTime, int breathIn, int breathOut, string message) : base(activityName, activityTime)
+   {
+       _breathIn = breathIn;
+       _breathOut = breathOut;
+       _message =  "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
+   }
 
-    private void BreathIn()
-    {
-        Console.WriteLine("Breathing in...");
-    }
+   // Methods
+   public void SetBreathsPerMinute(int breathsPerMinute)
+   {
+       _breathsPerMinute = breathsPerMinute;
+   }
 
-    private void BreathOut()
-    {
-        Console.WriteLine("Breathing out...");
-    }
+   public int GetBreathsPerMinute()
+   {
+       return _breathsPerMinute;
+   }
 
-    private void TrackTime()
-    {
-        var stopwatch = new Stopwatch();
-        stopwatch.Start();
-
-        while (stopwatch.Elapsed < TimeSpan.FromSeconds(_seconds))
-        {
-            BreathIn();
-            Thread.Sleep(2000);
-            BreathOut();
-            Thread.Sleep(2000);
-        }
-
-        stopwatch.Stop();
-        Console.WriteLine($"Breathing activity complete! You breathed for {_seconds} seconds.");
-    }
+   public void Breathe()
+   {
+       Console.WriteLine($"{_message}\n");
+       while (true)
+       {
+           Console.WriteLine($"Breathe in for {_breathIn} seconds...");
+           Thread.Sleep(_breathIn * 1000);
+           Console.WriteLine("Hold your breath...");
+           Thread.Sleep(3000);
+           Console.WriteLine($"Breathe out for {_breathOut} seconds...");
+           Thread.Sleep(_breathOut * 1000);
+       }
+   }
 }

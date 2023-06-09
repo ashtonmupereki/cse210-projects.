@@ -1,63 +1,36 @@
-class Menu
-{
-    private string _choice;
+using System;
 
-    public void DisplayMenu()
-    {
-        Console.WriteLine("Please choose an option:");
-        Console.WriteLine("1. Breathing Activity");
-        Console.WriteLine("2. Reflecting Activity");
-        Console.WriteLine("3. Listing Activity");
+public class Menu {
+    private string[] _menu;
+    private int _userChoice;
+    
+    public Menu(string[] menu) {
+        _menu = menu;
+    }
+    
+    public void DisplayMenu() {
+        Console.WriteLine("Please select one of the following options:");
+        Console.WriteLine("1. Start breathing activity");
+        Console.WriteLine("2. Start reflecting activity");
+        Console.WriteLine("3. Start listing activity");
         Console.WriteLine("4. Quit");
-    }
-
-    public void MenuItem()
-    {
-        int choice = int.Parse(Console.ReadLine());
-        switch (choice)
-        {
-            case 1:
-                new BreathingActivity().Start();
-                break;
-            case 2:
-                new ReflectingActivity().Start();
-                break;
-            case 3:
-                new ListingActivity().Start();
-                break;
-            case 4:
-                Console.WriteLine("Thank you for using the Breathing Activity Program!");
-                Console.WriteLine("Press any key to exit...");
-                Console.ReadKey();
-                break;
-            default:
-                break;
+        for (int i = 0; i < _menu.Length; i++) {
+            Console.WriteLine($"{i + 1}. {_menu[i]}");
         }
     }
-
-    public void Start()
-    {
-        Console.WriteLine("Welcome to the Breathing Activity Program!");
-        Console.WriteLine("Press any key to continue...");
-        Console.ReadKey();
-
-        while (true)
-        {
-            Console.Clear();
-            DisplayMenu();
-            MenuItem();
-
-            // wait for user input before returning to menu
-            if (_choice != "4")
-            {
-                Console.Write("\nPress any key to continue...");
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.WriteLine("\nThank you for using the Breathing Activity Program!");
-                return;
-            }
+    
+    public void GetUserChoice() {
+        Console.Write("Select an option from the menu: ");
+        string userInput = Console.ReadLine();
+        if (int.TryParse(userInput, out int userChoice)) {
+            _userChoice = userChoice;
+        } else {
+            Console.WriteLine("Invalid input. Please enter a number.");
+            GetUserChoice();
         }
+    }
+    
+    public int UserChoice {
+        get { return _userChoice; }
     }
 }

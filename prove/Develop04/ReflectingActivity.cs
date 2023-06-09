@@ -1,53 +1,70 @@
-class ReflectingActivity
+public class ReflectingActivity : Activity
 {
-    private int _seconds;
-    private List<string> _questions = new List<string>()
+    private List<string> _promptList = new List<string>
     {
-        "What did you learn today?",
-        "What was the best part of your day?",
-        "What was the most challenging part of your day?",
-        "What are you grateful for today?",
-        "What could you have done differently today?",
-        "What are you looking forward to tomorrow?"
+        "Think of a time when you stood up for someone else.",
+        "Think of a time when you did something really difficult.",
+        "Think of a time when you helped someone in need.",
+        "Think of a time when you did something truly selfless.",
+        "Think of a time when you failed at something."
     };
-
-    public void startReflecting(int seconds)
+    private List<string> _questionList = new List<string>
     {
-        _seconds = seconds;
-        Console.WriteLine($"Starting reflecting activity for {_seconds} seconds...");
-        reflectOnExperience();
+        "Why was this experience meaningful to you?",
+        "Have you ever done anything like this before?",
+        "How did you get started?",
+        "How did you feel when it was complete?",
+        "What made this time different than other times when you were not as successful?",
+        "What is your favorite thing about this experience?",
+        "What could you learn from this experience that applies to other situations?",
+        "What did you learn about yourself through this experience?",
+        "How can you keep this experience in mind in the future?",
+        "What was your motivation?"
+    };
+    private List<string> _useQuestionsList = new List<string>();
+
+    private string _prompt;
+    private string _question;
+    private string _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+
+    public void GetActivityDescription()
+    {
+        Console.WriteLine(_description);
     }
 
-    private void reflectOnExperience()
+    public string GetRandomPrompt()
     {
-        var stopwatch = new Stopwatch();
-        stopwatch.Start();
-
-        while (stopwatch.Elapsed < TimeSpan.FromSeconds(_seconds))
-        {
-            DisplayQuestion();
-            promptForReflection();
-        }
-
-        stopwatch.Stop();
-        Console.WriteLine($"Reflecting activity complete! You reflected for {_seconds} seconds.");
-    }
-
-    private void promptForReflection()
-    {
-        Console.WriteLine("Please reflect on the question and press any key to continue...");
-        Console.ReadKey();
+        Random random = new Random();
+        int index = random.Next(_promptList.Count);
+        _prompt = _promptList[index];
+        return _prompt;
     }
 
     private string GetRandomQuestion()
     {
         Random random = new Random();
-        int index = random.Next(_questions.Count);
-        return _questions[index];
+        int index = random.Next(_questionList.Count);
+        _question = _questionList[index];
+        while (_useQuestionsList.Contains(_question))
+        {
+            index = random.Next(_questionList.Count);
+            _question = _questionList[index];
+        }
+        _useQuestionsList.Add(_question);
+        return _question;
     }
 
-    private void DisplayQuestion()
+    public void GetPromptAndQuestions()
     {
-        Console.WriteLine(GetRandomQuestion());
+        Console.WriteLine("\nConsider the following prompt:");
+        Console.WriteLine($"\n--- {_prompt} ---");
+        Console.WriteLine($"\nWhen you have something in mind, press enter to continue.");
+
+        Console.ReadLine();
+
+        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+
+        foreach (string question in _questionList)
+            Console.WriteLine($"\n- {GetRandomQuestion()}");
     }
 }
