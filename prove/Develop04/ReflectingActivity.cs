@@ -1,4 +1,4 @@
-public class ReflectingActivity : Activity
+public class ReflectingActivity: Activity
 {
     private List<string> _promptList = new List<string>
     {
