@@ -12,30 +12,24 @@ class BreathingActivity : BaseActivity
         _breathOut = breathOut;
     }
 
-    // Method to display the "Breath In" message
+    // Method to breathe in
     public void BreathIn()
     {
-        Console.WriteLine($"Breath in for {_breathIn} seconds.");
+        Console.WriteLine("Breathe in for " + _breathIn + " seconds...");
+        Thread.Sleep(_breathIn * 1000);
     }
 
-    // Method to display the "Breath Out" message
+    // Method to breathe out
     public void BreathOut()
     {
-        Console.WriteLine($"Breath out for {_breathOut} seconds.");
+        Console.WriteLine("Breathe out for " + _breathOut + " seconds...");
+        Thread.Sleep(_breathOut * 1000);
     }
 
-    // Method to start the activity
-    public override void Start()
+    // Method to print out the message for the activity
+    public void PrintMessage()
     {
         Console.WriteLine(_message);
-        GetReady();
-        Console.WriteLine("Enter the number of seconds to breath in:");
-        int breathInTime = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Enter the number of seconds to breath out:");
-        int breathOutTime = Convert.ToInt32(Console.ReadLine());
-        BreathIn();
-        CountTime(breathInTime);
-        BreathOut();
-        CountTime(breathOutTime);
     }
 }
+
