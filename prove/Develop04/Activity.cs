@@ -1,66 +1,48 @@
-using System;
-using System.Threading;
-
-public class Activity
+class BaseActivity
 {
     // Attributes
     private string _activityName;
-    private int _activityTime;
-    private string _message = "Lets get started";
+    private int _activityDuration;
 
-    // Constructors
-    public Activity(string activityName, int activityTime)
+    // Constructor
+    public BaseActivity(string activityName, int activityDuration)
     {
         _activityName = activityName;
-        _activityTime = activityTime;
-    }
-    public void GetActivityName()
-    {
-        Console.WriteLine($"Welcome to the {_activityName} \n");
-    }
-    public void SetActivityName(string activityName)
-    {
-        _activityName = activityName;
-    }
-    public int GetActivityTime()
-    {
-        Console.Write("\nHow long, in seconds, would you like for your session? ");
-        int userSeconds = Int32.Parse(Console.ReadLine());
-        _activityTime = userSeconds;
-        return userSeconds;
-    }
-    public void SetActivityTime(int activityTime)
-    {
-        _activityTime = activityTime;
+        _activityDuration = activityDuration;
     }
 
-    // Methods
+    // Method to get the activity name
+    public string GetActivityName()
+    {
+        return _activityName;
+    }
+
+    // Method to get the activity duration
+    public int GetActivityDuration()
+    {
+        return _activityDuration;
+    }
+
+    // Method to get ready for the activity
     public void GetReady()
     {
-        Console.Clear();
-        Roller roller = new Roller();
-        roller.ShowRollerReady();
+        Console.WriteLine("Getting ready for " + _activityName);
     }
 
+    // Method to indicate that the activity is done
     public void GetDone()
     {
-        Roller roller = new Roller();
-        roller.ShowRollerDone();
-        Console.WriteLine($"\nYou have completed another {_activityTime} seconds of the {_activityName} Activity!");
-        roller.ShowRoller();
+        Console.WriteLine(_activityName + " is done!");
     }
-     public void CountDown(int time)
+
+    // Method to count down the time for the activity
+    public void CountTime()
     {
-        Console.WriteLine();  //insert blank line to start
-        for (int i = time; i > 0; i--)
+        for (int i = _activityDuration; i > 0; i--)
         {
-            Console.Write($"{_message}{i}");
-            Thread.Sleep(1000);
-            string blank = new string('\b', (_message.Length + 5));  // Overwrite line
-            Console.Write(blank);
+            Console.WriteLine(i + " minutes left...");
+            Thread.Sleep(1000 * 60); // Sleep for 1 minute
         }
-        
+        Console.WriteLine("Time's up!");
     }
-
-
 }
