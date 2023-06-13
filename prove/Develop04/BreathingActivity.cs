@@ -1,3 +1,4 @@
+using Ashton;
 class BreathingActivity : BaseActivity
 {
     // Attributes
