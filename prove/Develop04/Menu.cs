@@ -115,8 +115,7 @@ class Menu
             Console.WriteLine("Welcome to the listing activity!");
             Console.WriteLine("How many seconds to you want to spend in this activity?");
             Console.ReadLine();
-            Console.ReadLine();
-            Console.ReadLine();
+            
 
             Console.WriteLine("Get Ready..");
 
@@ -154,9 +153,7 @@ class Menu
 
         else{
             Console.WriteLine("You have quited the program");
+            
         }
-        
-
-
     }
 }
