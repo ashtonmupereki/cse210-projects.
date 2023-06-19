@@ -31,6 +31,8 @@ namespace MyNamespace
             Console.WriteLine("5. Record event");
             Console.WriteLine("6. Quit");
             Console.Write("Select a choice from the menu: ");
+
+            
         }
 
         public string GetChoices()
