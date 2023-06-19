@@ -1,56 +1,80 @@
 using System;
 
-namespace Ashton
+namespace MyNamespace
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            WelcomeMessage();
-            Menu menu = new Menu(10);
-            menu.DisplayPoints();
-            menu.DisplayChoices();
-            string choice = menu.GetChoices();
+            Menu menu = new Menu();
+            string choice = "";
+
+            wellComeMessage();
 
             while (choice != "6")
             {
+                menu.DisplayPoints();
+                menu.DisplayChoices();
+                choice = Console.ReadLine();
+
                 switch (choice)
                 {
                     case "1":
                         menu.SubMenu();
+                        string goalType = Console.ReadLine();
+
+                        switch (goalType)
+                        {
+                            case "1":
+                                SimpleGoal simpleGoal = new SimpleGoal();
+                                menu.AddActivity(simpleGoal);
+                                break;
+                            case "2":
+                                EternalGoal eternalGoal = new EternalGoal();
+                                menu.AddActivity(eternalGoal);
+                                break;
+                            case "3":
+                                CheckListGoal checkListGoal = new CheckListGoal();
+                                menu.AddActivity(checkListGoal);
+                                break;
+                            default:
+                                Console.WriteLine("Invalid choice.");
+                                break;
+                        }
                         break;
                     case "2":
-                        Console.WriteLine("Listing goals...");
+                        foreach (Activity activity in menu.GetActivities())
+                        {
+                            Console.WriteLine(activity.ActivityName() + " - " + activity.ActivityDescription() + " - " + activity.Points() + " points");
+                        }
                         break;
                     case "3":
-                        Console.WriteLine("Saving goals...");
+                        SaveGoals(menu.GetActivities());
                         break;
                     case "4":
-                        Console.WriteLine("Loading goals...");
+                        LoadGoals(menu);
                         break;
                     case "5":
-                        Console.WriteLine("Recording event...");
+                        RecordEvent(menu);
+                        break;
+                    case "6":
+                        EndingMessage();
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;
                 }
-
-                menu.DisplayChoices();
-                choice = menu.GetChoices();
             }
-
-            EndMessage();
         }
 
-        static void WelcomeMessage()
+        static void wellComeMessage()
         {
-            Console.WriteLine("Welcome to the program!");
+            Console.WriteLine("Welcome to the goal tracker program!");
         }
 
-        static void EndMessage()
+        static void EndingMessage()
         {
-            Console.WriteLine("Thank you for using the program!");
+            Console.WriteLine("Thank you for using the goal tracker program!");
         }
     }
 }

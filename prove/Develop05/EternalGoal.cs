@@ -1,31 +1,33 @@
 using System;
 
-namespace Ashton
+namespace MyNamespace
 {
     public class EternalGoal : Activity
     {
         private bool _completed;
 
-        public EternalGoal(string goalType, int points) : base(goalType, points)
+        public EternalGoal(string description, int points) : base("Eternal Goal", points, description)
         {
-            _activityName = "Simple Goal";
-            Console.Write("Enter the name of the goal: ");
-            _description = Console.ReadLine();
+           Console.Write("Enter the name of the goal: ");
+            _activityName = Console.ReadLine();
             Console.Write("Enter the description of the goal: ");
-            _description += " - " + Console.ReadLine();
+            _description = Console.ReadLine();
             Console.Write("Enter the number of points associated with this goal: ");
             _points = int.Parse(Console.ReadLine());
+            _goalType = "Simple Goal";
+            _completed = false;
         }
 
-        public void SimpleGoalName()
+        public string EternalGoalName()
         {
-            Console.WriteLine("Simple Goal");
+            return _activityName;
         }
 
-        public void SimpleGoalDescription()
+        public string EternalGoalDescription()
         {
-            Console.WriteLine(_description);
+            return _description;
         }
+
         public bool IsCompleted()
         {
             return _completed;
@@ -34,6 +36,7 @@ namespace Ashton
         public void RecordGoal()
         {
             Console.WriteLine("Recording goal...");
+            _completed = true;
         }
     }
 }

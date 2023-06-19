@@ -1,36 +1,34 @@
 using System;
+using System.Collections.Generic;
 
-namespace Ashton
+namespace MyNamespace
 {
     public class CheckListGoal : Activity
     {
+        private List<string> _checklist;
         private bool _completed;
-        private int _bonus;
-        private int _timesToAccomplish;
 
-        public CheckListGoal(string goalType, int points) : base(goalType, points)
+        public CheckListGoal(string description, int points) : base("CheckList Goal", points, description)
         {
-            _activityName = "Checklist Goal";
             Console.Write("Enter the name of the goal: ");
-            _description = Console.ReadLine();
+            _activityName = Console.ReadLine();
             Console.Write("Enter the description of the goal: ");
-            _description += " - " + Console.ReadLine();
+            _description = Console.ReadLine();
             Console.Write("Enter the number of points associated with this goal: ");
             _points = int.Parse(Console.ReadLine());
-            Console.Write("Enter how many times this goal needs to be accomplished for a bonus: ");
-            _timesToAccomplish = int.Parse(Console.ReadLine());
-            Console.Write("Enter the bonus for accomplishing it that many times: ");
-            _bonus = int.Parse(Console.ReadLine());
+            _goalType = "Checklist Goal";
+            _checklist = new List<string>();
+            _completed = false;
         }
 
-        public void CheckListGoalName()
+        public string ChecklistGoalName()
         {
-            Console.WriteLine("Checklist Goal");
+            return _activityName;
         }
 
-        public void CheckListGoalDescription()
+        public string ChecklistGoalDescription()
         {
-            Console.WriteLine(_description);
+            return _description;
         }
 
         public bool IsCompleted()
@@ -38,9 +36,22 @@ namespace Ashton
             return _completed;
         }
 
+        public void AddToChecklist(string item)
+        {
+            Console.WriteLine("Adding item to checklist...");
+            _checklist.Add(item);
+        }
+
+        public void RemoveFromChecklist(string item)
+        {
+            Console.WriteLine("Removing item from checklist...");
+            _checklist.Remove(item);
+        }
+
         public void RecordGoal()
         {
             Console.WriteLine("Recording goal...");
+            _completed = true;
         }
     }
 }

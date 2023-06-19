@@ -1,20 +1,24 @@
 using System;
+using System.Collections.Generic;
 
-namespace Ashton
+namespace MyNamespace
 {
     public class Menu
     {
-        private string _choices;
+        private List<Activity> _activities;
         private int _points;
+        private string _choices;
 
-        public Menu(int points)
+        public Menu()
         {
-            _points = points;
+            _activities = new List<Activity>();
+            _points = 0;
+            _choices = "";
         }
 
         public void DisplayPoints()
         {
-            Console.WriteLine($"You have {_points} points.");
+            Console.WriteLine("You have " + _points + " points.");
         }
 
         public void DisplayChoices()
@@ -43,9 +47,9 @@ namespace Ashton
             Console.Write("Which type of goal do you want to create?: ");
         }
 
-        public void GetScore()
+        public int GetScore()
         {
-            Console.WriteLine("Getting score...");
+            return _points;
         }
     }
 }

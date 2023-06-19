@@ -1,6 +1,6 @@
 using System;
 
-namespace Ashton
+namespace MyNamespace
 {
     public class Activity
     {
@@ -15,39 +15,35 @@ namespace Ashton
             _goalType = goalType;
             _points = points;
             _description = description;
+            _activityName = "Activity";
         }
 
-        public void Run()
+        public virtual void Run()
         {
-            Console.WriteLine("Running...");
+            Console.WriteLine("Running activity...");
         }
 
-        public void Save()
-        {
-            Console.WriteLine("Saving...");
-        }
-
-        public void AddActivity()
+        public virtual void AddActivity()
         {
             Console.WriteLine("Adding activity...");
         }
 
-        public void RecordActivity()
+        public virtual void RecordActivity()
         {
             Console.WriteLine("Recording activity...");
         }
 
-        public void DisplayActivities()
+        public virtual void DisplayActivities()
         {
             Console.WriteLine("Displaying activities...");
         }
 
-        public void DisplayScore()
+        public virtual void DisplayScore()
         {
             Console.WriteLine("Displaying score...");
         }
 
-        public void LoadActivities()
+        public virtual void LoadActivities()
         {
             Console.WriteLine("Loading activities...");
         }
