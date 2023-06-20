@@ -24,13 +24,11 @@ namespace MyNamespace
         public void DisplayChoices()
         {
             Console.WriteLine("Menu options:");
-            Console.WriteLine("1. Create a new goal");
-            Console.WriteLine("2. List goals");
-            Console.WriteLine("3. Save goals");
-            Console.WriteLine("4.Load goals");
-            Console.WriteLine("5. Record event");
-            Console.WriteLine("6. Quit");
-            
+            Console.WriteLine("");
+            Console.WriteLine("");
+             Console.WriteLine("");
+              Console.WriteLine("");
+               Console.WriteLine("");
             for (int i = 0; i < _choices.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {_choices[i]}");
