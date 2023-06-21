@@ -26,9 +26,10 @@ namespace MyNamespace
             Console.WriteLine("Menu options:");
             Console.WriteLine("");
             Console.WriteLine("");
-             Console.WriteLine("");
-              Console.WriteLine("");
-               Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            
             for (int i = 0; i < _choices.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {_choices[i]}");

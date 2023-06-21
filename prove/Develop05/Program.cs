@@ -1,20 +1,84 @@
 using System;
+using System.Collections.Generic;
 
 namespace MyNamespace
 {
-    public class Program
+    public class EternalQuestProgram
     {
-        static void Main(string[] args)
+        private int _points;
+        private List<string> _choices;
+        private List<string> _activities;
+
+        public EternalQuestProgram(int points, List<string> choices, List<string> activities)
         {
-            Console.WriteLine("Welcome to the goal tracker program!");
+            _points = points;
+            _choices = choices;
+            _activities = activities;
+        }
 
-        
+        public void DisplayPoints()
+        {
+            Console.WriteLine($"Points: {_points}");
+        }
 
-            
-            Console.WriteLine("Thank you for using the goal tracker program!");
-                        
+        public void DisplayChoices()
+        {
+            Console.WriteLine("Menu options:");
+            for (int i = 0; i < _choices.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {_choices[i]}");
+            }
+            Console.Write("Select a choice from the menu: ");
+            int choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    SubMenu();
+                    break;
+                case 2:
+                    // List goals
+                    break;
+                case 3:
+                    // Save goals
+                    break;
+                case 4:
+                    // Load goals
+                    break;
+                case 5:
+                    // Record event
+                    break;
+                case 6:
+                    // Quit
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
+            }
+        }
+
+        public void SubMenu()
+        {
+            Console.WriteLine("Which type of goal do you want to create?:");
+            Console.WriteLine("1. Simple goals");
+            Console.WriteLine("2. Eternal goals");
+            Console.WriteLine("3. Check list goals");
+
+            int choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    // Create new simple goal
+                    break;
+                case 2:
+                    // Create new eternal goal
+                    break;
+                case 3:
+                    // Create new checklist goal
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
+            }
         }
     }
 }
-    
-
