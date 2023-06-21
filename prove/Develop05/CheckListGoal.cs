@@ -21,6 +21,20 @@ namespace MyNamespace
             _completed = false;
         }
 
+        public override void DisplayActivities()
+        {
+            Console.WriteLine($"Activity name: {_activityName}");
+            Console.WriteLine($"Activity type: {_goalType}");
+            Console.WriteLine($"Activity description: {_description}");
+            Console.WriteLine($"Activity points: {_points}");
+            Console.WriteLine($"Activity status: {(_completed ? "Completed" : "Incomplete")}");
+            Console.WriteLine("Checklist items:");
+            foreach (var item in _checklist)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         public string ChecklistGoalName()
         {
             return _activityName;

@@ -8,7 +8,7 @@ namespace MyNamespace
 
         public EternalGoal(string description, int points) : base("Eternal Goal", points, description)
         {
-           Console.Write("Enter the name of the goal: ");
+            Console.Write("Enter the name of the goal: ");
             _activityName = Console.ReadLine();
             Console.Write("Enter the description of the goal: ");
             _description = Console.ReadLine();
@@ -37,6 +37,13 @@ namespace MyNamespace
         {
             Console.WriteLine("Recording goal...");
             _completed = true;
+        }
+
+        public override void DisplayActivities()
+        {
+            base.DisplayActivities();
+            Console.WriteLine($"Activity type: {_goalType}");
+            Console.WriteLine($"Activity status: {(_completed ? "Completed" : "Incomplete")}");
         }
     }
 }

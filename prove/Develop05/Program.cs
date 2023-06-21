@@ -80,5 +80,12 @@ namespace MyNamespace
                     break;
             }
         }
+
+        static void Main(string[] args)
+        {
+            var eternalQuestProgram = new EternalQuestProgram(0, new List<string>(), new List<string>());
+            eternalQuestProgram.DisplayPoints();
+            eternalQuestProgram.DisplayChoices();
+        }
     }
 }

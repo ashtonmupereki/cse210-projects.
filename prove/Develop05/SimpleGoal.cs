@@ -33,7 +33,7 @@ namespace MyNamespace
             return _completed;
         }
 
-        public void RecordGoal()
+        public override void RecordActivity()
         {
             Console.WriteLine("Recording goal...");
             _completed = true;

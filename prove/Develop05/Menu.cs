@@ -74,9 +74,20 @@ namespace MyNamespace
             {
                 case 1:
                     // Create new simple goal
+                    Console.Write("Enter the name of the goal: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter the description of the goal: ");
+                    string description = Console.ReadLine();
+                    Console.Write("Enter the number of points associated with this goal: ");
+                    int points = int.Parse(Console.ReadLine());
+                    SimpleGoal simpleGoal = new SimpleGoal(name, points);
+
                     break;
+
                 case 2:
                     // Create new eternal goal
+                    
+
                     break;
                 case 3:
                     // Create new checklist goal
