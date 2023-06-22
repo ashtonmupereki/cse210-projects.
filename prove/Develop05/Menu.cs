@@ -21,14 +21,20 @@ namespace MyNamespace
             Console.WriteLine($"Points: {_points}");
         }
 
+        public void DisplayActivities()
+        {
+            Console.WriteLine($"Goals: {_activities}");
+        }
+        
         public void DisplayChoices()
         {
             Console.WriteLine("Menu options:");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine("1. Create a new goal.");
+            Console.WriteLine("2. List goals");
+            Console.WriteLine("3. ");
+            Console.WriteLine("4. ");
+            Console.WriteLine("5. ");
+            Console.WriteLine("6. Quit.");
             
             for (int i = 0; i < _choices.Count; i++)
             {
@@ -74,13 +80,7 @@ namespace MyNamespace
             {
                 case 1:
                     // Create new simple goal
-                    Console.Write("Enter the name of the goal: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Enter the description of the goal: ");
-                    string description = Console.ReadLine();
-                    Console.Write("Enter the number of points associated with this goal: ");
-                    int points = int.Parse(Console.ReadLine());
-                    SimpleGoal simpleGoal = new SimpleGoal(name, points);
+                    
 
                     break;
 

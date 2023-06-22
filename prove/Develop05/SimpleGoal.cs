@@ -14,7 +14,7 @@ namespace MyNamespace
             _description = Console.ReadLine();
             Console.Write("Enter the number of points associated with this goal: ");
             _points = int.Parse(Console.ReadLine());
-            _goalType = "Simple Goal";
+            _goals = "Simple Goal";
             _completed = false;
         }
 

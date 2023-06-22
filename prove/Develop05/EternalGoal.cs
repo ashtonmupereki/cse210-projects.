@@ -14,7 +14,7 @@ namespace MyNamespace
             _description = Console.ReadLine();
             Console.Write("Enter the number of points associated with this goal: ");
             _points = int.Parse(Console.ReadLine());
-            _goalType = "Simple Goal";
+            _goals = "Simple Goal";
             _completed = false;
         }
 
@@ -42,7 +42,7 @@ namespace MyNamespace
         public override void DisplayActivities()
         {
             base.DisplayActivities();
-            Console.WriteLine($"Activity type: {_goalType}");
+            Console.WriteLine($"Activity type: {_goals}");
             Console.WriteLine($"Activity status: {(_completed ? "Completed" : "Incomplete")}");
         }
     }

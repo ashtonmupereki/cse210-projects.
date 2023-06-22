@@ -4,15 +4,15 @@ namespace MyNamespace
 {
     public class Activity
     {
-        protected string _goalType;
+        protected string _goals;
         protected int _points;
         protected int _score;
         protected string _description;
         protected string _activityName;
 
-        public Activity(string goalType, int points, string description)
+        public Activity(string goals, int points, string description)
         {
-            _goalType = goalType;
+            _goals = goals;
             _points = points;
             _description = description;
             _activityName = "Activity";

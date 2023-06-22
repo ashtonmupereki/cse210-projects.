@@ -16,7 +16,7 @@ namespace MyNamespace
             _description = Console.ReadLine();
             Console.Write("Enter the number of points associated with this goal: ");
             _points = int.Parse(Console.ReadLine());
-            _goalType = "Checklist Goal";
+            _goals = "Checklist Goal";
             _checklist = new List<string>();
             _completed = false;
         }
@@ -24,7 +24,7 @@ namespace MyNamespace
         public override void DisplayActivities()
         {
             Console.WriteLine($"Activity name: {_activityName}");
-            Console.WriteLine($"Activity type: {_goalType}");
+            Console.WriteLine($"Activity type: {_goals}");
             Console.WriteLine($"Activity description: {_description}");
             Console.WriteLine($"Activity points: {_points}");
             Console.WriteLine($"Activity status: {(_completed ? "Completed" : "Incomplete")}");
