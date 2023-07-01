@@ -44,19 +44,15 @@ Select an option from the menu:  ";
         return _userChoice;
     }
 
-    
-
-
-
     private string _subMenu = $@"
-*SubMenu Options*
+    *SubMenu Options*
 
-The Types of Goals are:
-1. Simple Goal
-2. Eternal Goal
-3. Checklist Goal
-4. Back to Main Menu
-What type of goal would you like to create?  ";
+    The Types of Goals are:
+    1. Simple Goal
+    2. Eternal Goal
+    3. Checklist Goal
+    4. Back to Main Menu
+    What type of goal would you like to create?  ";
 
     public string _goalInput;
     private int _goalChoice = 0;

@@ -12,7 +12,7 @@ class Program
         Management goals = new Management();
 
         Console.Clear();
-        Console.Write("\nWelcome to the Eternal Quest Program\n");
+        Console.Write("Welcome to the Eternal Quest Program");
 
         Console.Write($"\nYou currently have {goals.GetTotalPoints()} points!\n");
         Menu choice = new Menu();
