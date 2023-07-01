@@ -1,146 +1,89 @@
 using System;
-using System.Collections.Generic;
 
-namespace MyNamespace
+public class Menu
 {
-    public class Menu
+
+    private string _menu = $@"
+Menu Options:
+
+Please select one of the following options:
+1. Create New Goal
+2. List Goals
+3. Save Goals
+4. Load Goals
+5. Record Goal Event
+6. Quit
+
+Select an option from the menu:  ";
+
+    public string _userInput;
+    private int _userChoice = 0;
+
+    
+    public int UserChoice()
+    
     {
-        private List<Activity> _goals;
+        Console.Write(_menu);
 
-        public Menu()
+        _userInput = Console.ReadLine();
+        _userChoice = 0;
+
+        try
         {
-            _goals = new List<Activity>();
+            _userChoice = int.Parse(_userInput);
         }
-
-        public void Run()
+        catch (FormatException)
         {
-            bool quit = false;
-            while (!quit)
-            {
-                Console.WriteLine("Menu options:");
-                Console.WriteLine("1. Create a new goal.");
-                Console.WriteLine("2. List goals.");
-                Console.WriteLine("3. Save goals.");
-                Console.WriteLine("4. Load goals.");
-                Console.WriteLine("5. Record event.");
-                Console.WriteLine("6. Quit.");
-
-                Console.Write("Select a choice from the menu: ");
-                string input = Console.ReadLine();
-
-                switch (input)
-                {
-                    case "1":
-                        CreateGoal();
-                        break;
-                    case "2":
-                        ListGoals();
-                        break;
-                    case "3":
-                        SaveGoals();
-                        break;
-                    case "4":
-                        LoadGoals();
-                        break;
-                    case "5":
-                        RecordEvent();
-                        break;
-                    case "6":
-                        quit = true;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please select a valid option.");
-                        break;
-                }
-            }
+            _userChoice = 0;
         }
-
-        private void CreateGoal()
+        catch (Exception exception)
         {
-            Console.WriteLine("What type of goal do you want to create?");
-            Console.WriteLine("1. Simple goal");
-            Console.WriteLine("2. Eternal goal");
-            Console.WriteLine("3. Checklist goal");
-            Console.Write("Select a choice from the menu: ");
-            string input = Console.ReadLine();
-
-            switch (input)
-            {
-                case "1":
-                    Console.Write("Enter a description for the simple goal: ");
-                    string description = Console.ReadLine();
-                    Console.Write("Enter the number of points for the simple goal: ");
-                    int points = int.Parse(Console.ReadLine());
-                    SimpleGoal simpleGoal = new SimpleGoal(description, points);
-                    _goals.Add(simpleGoal);
-                    Console.WriteLine("Simple goal created successfully.");
-                    break;
-                case "2":
-                    Console.Write("Enter a description for the eternal goal: ");
-                    description = Console.ReadLine();
-                    Console.Write("Enter the number of points for the eternal goal: ");
-                    points = int.Parse(Console.ReadLine());
-                    EternalGoal eternalGoal = new EternalGoal(description, points);
-                    _goals.Add(eternalGoal);
-                    Console.WriteLine("Eternal goal created successfully.");
-                    break;
-                case "3":
-                    Console.Write("Enter a description for the checklist goal: ");
-                    description = Console.ReadLine();
-                    Console.Write("Enter the number of points for the checklist goal: ");
-                    points = int.Parse(Console.ReadLine());
-                    CheckListGoal checklistGoal = new CheckListGoal(description, points);
-                    _goals.Add(checklistGoal);
-                    Console.WriteLine("Checklist goal created successfully.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please select a valid option.");
-                    break;
-            }
+            Console.WriteLine(
+                $"Unexpected error:  {exception.Message}");
         }
+        return _userChoice;
+    }
 
-        private void ListGoals()
+    
+
+
+
+    private string _subMenu = $@"
+*SubMenu Options*
+
+The Types of Goals are:
+1. Simple Goal
+2. Eternal Goal
+3. Checklist Goal
+4. Back to Main Menu
+What type of goal would you like to create?  ";
+
+    public string _goalInput;
+    private int _goalChoice = 0;
+
+    
+    public int GoalChoice()
+    
+    {
+
+        Console.Write(_menu);
+
+        _goalInput = Console.ReadLine();
+        _goalChoice = 0;
+        
+        try
         {
-            if (_goals.Count == 0)
-            {
-                Console.WriteLine("No goals to display.");
-                return;
-            }
-
-            foreach (var goal in _goals)
-            {
-                Console.WriteLine("--------------------------------");
-                goal.DisplayActivities();
-            }
+            _goalChoice = int.Parse(_goalInput);
         }
-
-        private void SaveGoals()
+        catch (FormatException)
         {
-            // TODO: Implement saving of goals to a file.
-            Console.WriteLine("Saving goals...");
+            _goalChoice = 0;
         }
-
-        private void LoadGoals()
+        catch (Exception exception)
         {
-            // TODO: Implement loading of goals from a file.
-            Console.WriteLine("Loading goals...");
+            Console.WriteLine(
+                $"Unexpected error:  {exception.Message}");
         }
-
-        private void RecordEvent()
-        {
-            Console.Write("Enter the name of the goal to record an event for: ");
-            string goalName = Console.ReadLine();
-
-            Activity goal = _goals.Find(g => g._activityName == goalName);
-
-            if (goal == null)
-            {
-                Console.WriteLine("Goal not found.");
-                return;
-            }
-
-            goal.RecordActivity();
-            Console.WriteLine("Event recorded successfully.");
-        }
+        return _goalChoice;
     }
 }
