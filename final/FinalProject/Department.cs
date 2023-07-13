@@ -1,48 +1,55 @@
-public class Department
+// NAME: ASHTON MUPEREKI
+//COURSE: CSE210-C#
+//PROJECT NAME: STUDENT MANAGEMENT SYSTEM
+using System;
+namespace Ashton
 {
-    private string _name;
-    private List<Course> _courses;
-    private List<Teacher> _teachers;
-
-    public Department(string name)
+    public class Department
     {
-        _name = name;
-        _courses = new List<Course>();
-        _teachers = new List<Teacher>();
-    }
+        private string _name;
+        private List<Course> _courses;
+        private List<Teacher> _teachers;
 
-    public string GetName()
-    {
-        return _name;
-    }
+        public Department(string name)
+        {
+            _name = name;
+            _courses = new List<Course>();
+            _teachers = new List<Teacher>();
+        }
 
-    public void AddCourse(Course course)
-    {
-        _courses.Add(course);
-    }
+        public string GetName()
+        {
+            return _name;
+        }
 
-    public void RemoveCourse(Course course)
-    {
-        _courses.Remove(course);
-    }
+        public void AddCourse(Course course)
+        {
+            _courses.Add(course);
+        }
 
-    public List<Course> GetCourses()
-    {
-        return _courses;
-    }
+        public void RemoveCourse(Course course)
+        {
+            _courses.Remove(course);
+        }
 
-    public void AddTeacher(Teacher teacher)
-    {
-        _teachers.Add(teacher);
-    }
+        public List<Course> GetCourses()
+        {
+            return _courses;
+        }
 
-    public void RemoveTeacher(Teacher teacher)
-    {
-        _teachers.Remove(teacher);
-    }
+        public void AddTeacher(Teacher teacher)
+        {
+            _teachers.Add(teacher);
+        }
 
-    public List<Teacher> GetTeachers()
-    {
-        return _teachers;
+        public void RemoveTeacher(Teacher teacher)
+        {
+            _teachers.Remove(teacher);
+        }
+
+        public List<Teacher> GetTeachers()
+        {
+            return _teachers;
+        }
     }
 }

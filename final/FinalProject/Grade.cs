@@ -1,28 +1,35 @@
-public class Grade
+// NAME: ASHTON MUPEREKI
+//COURSE: CSE210-C#
+//PROJECT NAME: STUDENT MANAGEMENT SYSTEM
+using System;
+namespace Ashton
 {
-    private Course _course;
-    private Student _student;
-    private double _value;
-
-    public Grade(Course course, Student student, double value)
+    public class Grade
     {
-        _course = course;
-        _student = student;
-        _value = value;
-    }
+        private Course _course;
+        private Student _student;
+        private double _value;
 
-    public Course GetCourse()
-    {
-        return _course;
-    }
+        public Grade(Course course, Student student, double value)
+        {
+            _course = course;
+            _student = student;
+            _value = value;
+        }
 
-    public Student GetStudent()
-    {
-        return _student;
-    }
+        public Course GetCourse()
+        {
+            return _course;
+        }
 
-    public double GetValue()
-    {
-        return _value;
+        public Student GetStudent()
+        {
+            return _student;
+        }
+
+        public double GetValue()
+        {
+            return _value;
+        }
     }
 }

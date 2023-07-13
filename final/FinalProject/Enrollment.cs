@@ -1,28 +1,35 @@
-public class Enrollment
+// NAME: ASHTON MUPEREKI
+//COURSE: CSE210-C#
+//PROJECT NAME: STUDENT MANAGEMENT SYSTEM
+using System;
+namespace Ashton
 {
-    private Course _course;
-    private Student _student;
-    private DateTime _enrollmentDate;
-
-    public Enrollment(Course course, Student student, DateTime enrollmentDate)
+    public class Enrollment
     {
-        _course = course;
-        _student = student;
-        _enrollmentDate = enrollmentDate;
-    }
+        private Course _course;
+        private Student _student;
+        private DateTime _enrollmentDate;
 
-    public Course GetCourse()
-    {
-        return _course;
-    }
+        public Enrollment(Course course, Student student, DateTime enrollmentDate)
+        {
+            _course = course;
+            _student = student;
+            _enrollmentDate = enrollmentDate;
+        }
 
-    public Student GetStudent()
-    {
-        return _student;
-    }
+        public Course GetCourse()
+        {
+            return _course;
+        }
 
-    public DateTime GetEnrollmentDate()
-    {
-        return _enrollmentDate;
+        public Student GetStudent()
+        {
+            return _student;
+        }
+
+        public DateTime GetEnrollmentDate()
+        {
+            return _enrollmentDate;
+        }
     }
 }
