@@ -1,42 +1,81 @@
-// NAME: ASHTON MUPEREKI
-//COURSE: CSE210-C#
-//PROJECT NAME: STUDENT MANAGEMENT SYSTEM
-
-using System;
-namespace Ashton
+public class Student : Person
 {
+    private List<Course> _courses;
 
-public class Student: Person
+    public Student(string name, string address, string email, int id) : base(name, address, email, id)
     {
-        private string _name;
-        private string _address;
-        private string _email;
-        private int _id;
-        private bool _status;
+        _courses = new List<Course>();
+    }
 
-        
-        public Student(string name, string address, string email, int id): base(name, address, email, id)
+    public void Enroll(Course course)
+    {
+        _courses.Add(course);
+    }
+    public void Drop(Course course)
+    {
+        _courses.Remove(course);
+    }
+
+    public List<Course> ViewCourses()
+    {
+        return _courses;
+    }
+
+    public override string SaveName()
+    {
+        // implementation to save the student's name to a database or file
+        return "Name saved!";
+    }
+
+    public override void SaveId()
+    {
+        // implementation to save the student's id to a database or file
+        Console.WriteLine("Student ID saved!");
+    }
+    public string GetName()
+    {
+        return base._name;
+    }
+
+    public int GetID()
+    {
+        return base._id;
+    }
+    public void GetCourses()
+    {
+        Console.WriteLine("Courses:");
+
+    }
+    public void AddCourse(string courseName, string courseCode)
+    {
+        Course course = new Course(courseName, courseCode);
+        _courses.Add(course);
+
+        Console.WriteLine("Course added successfully.");
+    }
+
+    public void DropCourse(string name, string code)
+    {
+        Course courseToRemove = null;
+
+        foreach (Course course in _courses)
         {
-            _name = name;
-            _address = address;
-            _id = id;
-            _email = email;
-            _status = true;
+            if (course.CourseName == name && course.CourseCode == code)
+            {
+                courseToRemove = course;
+                break;
+            }
         }
 
-        public Student(string name, string address, string email, int id, bool status): base(name, address, email, id)
+        if (courseToRemove != null)
         {
-            _status = status;
+            _courses.Remove(courseToRemove);
+            Console.WriteLine("Course dropped successfully.");
         }
-
-        public Boolean isCompleted()
+        else
         {
-            return _status;
-        }
-        public override void DisplayInfo()
-        {
-            base.DisplayInfo();
-            return ;
+            Console.WriteLine("Course not found.");
         }
     }
+
 }

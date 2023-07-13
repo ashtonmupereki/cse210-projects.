@@ -1,46 +1,53 @@
-// NAME: ASHTON MUPEREKI
-//COURSE: CSE210-C#
-//PROJECT NAME: STUDENT MANAGEMENT SYSTEM
-
 using System;
-namespace Ashton
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        MainMenu();
+    }
+
+    static void MainMenu()
+    {
+        Console.WriteLine("Welcome to the Student Enrollment System!");
+        Console.WriteLine("Please select an option:");
+        Console.WriteLine("1. Enroll a student in a course");
+        Console.WriteLine("2. View course roster");
+        Console.WriteLine("3. Quit");
+
+        string input = Console.ReadLine();
+
+        switch (input)
         {
-            // CREATE THE MENU
-            Menu menu = new Menu();
-
-            List<Course> courses = new List<Course>();
-            List<Student> students = new List<Student>();
-            List<Teacher> teachers = new List<Teacher>();
-            List<Grade> grades = new List<Grade>();
-            List<Enrollment> enrollments = new List<Enrollment>();
-            List<Department> departments = new List<Department>();
-            menu.Login();
-
-            List<string> animationStrings = new List<string>();
-            animationStrings.Add("|");
-            animationStrings.Add("/");
-            animationStrings.Add("-");
-            animationStrings.Add("\\");
-            animationStrings.Add("|");
-            animationStrings.Add("/");
-            animationStrings.Add("-");
-            animationStrings.Add("\\");
-
-            foreach (string s in animationStrings)
-            {
-                Console.Write(s);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-            }
-
-            Console.WriteLine("Login successful!");
-
-            menu.ShowMainMenu();
-
+            case "1":
+                // Enroll a student in a course
+                EnrollStudent();
+                break;
+            case "2":
+                // View course roster
+                ViewRoster();
+                break;
+            case "3":
+                // Quit
+                Console.WriteLine("Goodbye!");
+                return;
+            default:
+                Console.WriteLine("Invalid option, please try again.");
+                break;
         }
+
+        MainMenu();
+    }
+
+    static void EnrollStudent()
+    {
+        // TODO: Implement student enrollment logic
+        Console.WriteLine("Enrolling a student...");
+    }
+
+    static void ViewRoster()
+    {
+        // TODO: Implement course roster view logic
+        Console.WriteLine("Viewing course roster...");
     }
 }
