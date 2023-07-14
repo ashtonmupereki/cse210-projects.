@@ -25,10 +25,9 @@ namespace Ashton
             while (true)
             {
                 Console.WriteLine("Please select an option:");
-                Console.WriteLine("1. Login as a student");
-                Console.WriteLine("2. Login as a teacher");
-                Console.WriteLine("3. Quit");
-
+                Console.WriteLine("1. 'ENTER 1' to login as a student and after that 'ENTER 3' to proceed to student menu");
+                Console.WriteLine("2. 'ENTER 2' to login as a teacher and after that 'ENTER 4' to proceed to teacher menu");
+                
                 string input = Console.ReadLine();
 
                 switch (input)
@@ -40,7 +39,7 @@ namespace Ashton
                         TeacherLogin();
                         break;
                     case "3":
-                        Console.WriteLine("Thank you for using the School Management System!");
+                        Console.WriteLine("************************************************");
                         return;
                     default:
                         Console.WriteLine("Invalid option, please try again.");
@@ -49,7 +48,7 @@ namespace Ashton
             }
         }
 
-        private void StudentLogin()
+        public void StudentLogin()
         {
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
@@ -69,67 +68,67 @@ namespace Ashton
             // TODO: Implement student functionality
 
             }
-            private void StudentMenu(Student student)
-    {
-        Console.WriteLine($"Welcome {student.GetName()}!");
-
-        while (true)
-        {
-            Console.WriteLine("Please select an option:");
-            Console.WriteLine("1. View courses");
-            Console.WriteLine("2. Add course");
-            Console.WriteLine("3. Drop course");
-            Console.WriteLine("4. Logout");
-
-            string input = Console.ReadLine();
-
-            switch (input)
+            public void StudentMenu(Student student)
             {
-                case "1":
-                    // TODO: Implement view courses
-                    ViewCourses(student);
-                    break;
-                case "2":
-                    // TODO: Implement add course
-                    Console.Write("Enter course name: ");
-                    string name = Console.ReadLine();
+            Console.WriteLine($"Welcome {student.GetName()}!");
 
-                    Console.Write("Enter course code: ");
-                    string code = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Please select an option:");
+                Console.WriteLine("1. View courses");
+                Console.WriteLine("2. Add course");
+                Console.WriteLine("3. Drop course");
+                Console.WriteLine("4. **** ENTER 5**** to Logout");
 
-                    student.AddCourse(name, code);
-                    
-                    break;
-                case "3":
-                    // TODO: Implement drop course
+                string input = Console.ReadLine();
 
-                    Console.Write("Enter course name: ");
-                    string coursename = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        // TODO: Implement view courses
+                        ViewCourses(student);
+                        break;
+                    case "2":
+                        // TODO: Implement add course
+                        Console.Write("Enter course name: ");
+                        string name = Console.ReadLine();
 
-                    Console.Write("Enter course code: ");
-                    string coursecode = Console.ReadLine();
+                        Console.Write("Enter course code: ");
+                        string code = Console.ReadLine();
 
-                    student.DropCourse(coursename, coursecode);
-                    break;
-                case "4":
-                    Console.WriteLine("Logging out...");
-                    return;
-                default:
-                    Console.WriteLine("Invalid option, please try again.");
-                    break;
+                        student.AddCourse(name, code);
+                        
+                        break;
+                    case "3":
+                        // TODO: Implement drop course
+
+                        Console.Write("Enter course name: ");
+                        string coursename = Console.ReadLine();
+
+                        Console.Write("Enter course code: ");
+                        string coursecode = Console.ReadLine();
+
+                        student.DropCourse(coursename, coursecode);
+                        break;
+                    case "4":
+                        Console.WriteLine("Logging out...");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option, please try again.");
+                        break;
+                }
             }
         }
-    }
-    private void ViewCourses(Student student)
-    {
-        Console.WriteLine("Courses:");
+        public void ViewCourses(Student student)
+        {
+            Console.WriteLine("Courses:");
 
-        Console.WriteLine("Press Enter to return to the menu...");
-        Console.ReadLine();
-    }
+            Console.WriteLine("Press Enter to return to the menu...");
+            Console.ReadLine();
+        }
 
 
-        private void TeacherLogin()
+        public void TeacherLogin()
         {
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
@@ -146,7 +145,7 @@ namespace Ashton
 
         }
         
-        private void TeacherMenu(Teacher teacher)
+        public void TeacherMenu(Teacher teacher)
     {
         Console.WriteLine($"Welcome {teacher.GetName()}!");
 

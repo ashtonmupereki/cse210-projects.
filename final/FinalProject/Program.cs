@@ -14,16 +14,20 @@ namespace Ashton
 
             List<Course> courses = new List<Course>() { course1, course2, course3 };
 
-            
-            List<Student> students = new List<Student>();
+            // Create some sample students and teachers
+            Student student1 = new Student("Learner", "123 Main St", "john.smith@example.com", 1001);
+            Teacher teacher1 = new Teacher("Instructor", "456 Elm St", "jane.doe@example.com", 2002);
 
-            
-
-            List<Teacher> teachers = new List<Teacher>();
+            List<Student> students = new List<Student>() { student1 };
+            List<Teacher> teachers = new List<Teacher>() { teacher1 };
 
             // Create and start the menu
             Menu menu = new Menu(courses, students, teachers);
             menu.Start();
+
+            // After the menu starts, you can call the StudentMenu() and TeacherMenu() methods:
+            menu.StudentMenu(student1);
+            menu.TeacherMenu(teacher1);
         }
     }
 }
