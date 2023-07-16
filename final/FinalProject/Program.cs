@@ -15,7 +15,7 @@ namespace Ashton
             List<Course> courses = new List<Course>() { course1, course2, course3 };
 
             // Create some sample students and teachers
-            Student student1 = new Student("Learner", "123 Main St", "john.smith@example.com", 1001);
+            Student student1 = new Student("User", "123 Main St", "john.smith@example.com", 1001);
             Teacher teacher1 = new Teacher("Instructor", "456 Elm St", "jane.doe@example.com", 2002);
 
             List<Student> students = new List<Student>() { student1 };
@@ -24,6 +24,24 @@ namespace Ashton
             // Create and start the menu
             Menu menu = new Menu(courses, students, teachers);
             menu.Start();
+
+            List<string> animationStrings = new List<string>();
+            animationStrings.Add("|");
+            animationStrings.Add("/");
+            animationStrings.Add("-");
+            animationStrings.Add("\\");
+            animationStrings.Add("|");
+            animationStrings.Add("/");
+            animationStrings.Add("-");
+            animationStrings.Add("\\");
+
+            foreach (string s in animationStrings)
+            {
+                Console.Write(s);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
+
 
             // After the menu starts, you can call the StudentMenu() and TeacherMenu() methods:
             menu.StudentMenu(student1);

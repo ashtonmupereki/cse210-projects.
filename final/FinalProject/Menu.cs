@@ -25,8 +25,8 @@ namespace Ashton
             while (true)
             {
                 Console.WriteLine("Please select an option:");
-                Console.WriteLine("1. 'ENTER 1' to login as a student and after that 'ENTER 3' to proceed to student menu");
-                Console.WriteLine("2. 'ENTER 2' to login as a teacher and after that 'ENTER 4' to proceed to teacher menu");
+                Console.WriteLine("1. 'ENTER 1' to login as a student and after that 'ENTER 3' to proceed to  menu");
+                Console.WriteLine("2. 'ENTER 2' to login as a teacher and after that 'ENTER 3' to proceed to  menu");
                 
                 string input = Console.ReadLine();
 
@@ -39,6 +39,9 @@ namespace Ashton
                         TeacherLogin();
                         break;
                     case "3":
+                        Console.WriteLine("************************************************");
+                        return;
+                    case "4":
                         Console.WriteLine("************************************************");
                         return;
                     default:
@@ -74,11 +77,30 @@ namespace Ashton
 
             while (true)
             {
+                Console.WriteLine(" OPTIONS 1 TO 3 ARE FOR STUDENTS AND OPTION 4 IS FOR TEACHERS");
+                List<string> animationStrings = new List<string>();
+                animationStrings.Add("|");
+                animationStrings.Add("/");
+                animationStrings.Add("-");
+                animationStrings.Add("\\");
+                animationStrings.Add("|");
+                animationStrings.Add("/");
+                animationStrings.Add("-");
+                animationStrings.Add("\\");
+
+                foreach (string s in animationStrings)
+                {
+                    Console.Write(s);
+                    Thread.Sleep(1000);
+                    Console.Write("\b \b");
+                }
+
                 Console.WriteLine("Please select an option:");
                 Console.WriteLine("1. View courses");
                 Console.WriteLine("2. Add course");
                 Console.WriteLine("3. Drop course");
-                Console.WriteLine("4. **** ENTER 5**** to Logout");
+                Console.WriteLine("4. ENTER 4 IF YOU`RE A TEACHER TO PROCEED TO TEACHER MENU");
+                
 
                 string input = Console.ReadLine();
 
@@ -121,7 +143,7 @@ namespace Ashton
         }
         public void ViewCourses(Student student)
         {
-            Console.WriteLine("Courses:");
+            Console.WriteLine("Courses:  Math For Real World","Web Development","JavaScript","From Atoms To Humans","Carrier Development","Accounting Basics","Business Management");
 
             Console.WriteLine("Press Enter to return to the menu...");
             Console.ReadLine();
@@ -165,7 +187,7 @@ namespace Ashton
                 case "1":
                     // TODO: Implement view courses taught
                     List<Course> coursesTaught = teacher.GetCoursesTaught();
-                    Console.WriteLine("Courses taught:");
+                    Console.WriteLine("Courses taught:   JavaScript","Web Development");
 
                     foreach (Course course in coursesTaught)
                     {
